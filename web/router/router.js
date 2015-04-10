@@ -8,5 +8,16 @@ module.exports = function(app){
 
     app.post('/inscription', PersonneController.Inscription);
 
+    //Connexion
     app.get('/connexion', ConnexionController.Connexion)
+    app.post('/connexion', ConnexionController.Connect)
+
+    //User
+    app.get('/home', HomeController.Home)
+    app.post('/home', HomeController.Home)
+
+    //Default
+    //TODO route par default
+
+
 };

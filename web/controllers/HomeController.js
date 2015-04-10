@@ -3,6 +3,11 @@ var f = require("../fonctions.js");
   // ////////////////////////////////////////////// A C C U E I L
 module.exports.Index = function(request, response){
     response.title = "Vos photos en ligne";
+    response.render('index', response);
+};
+
+module.exports.Home = function(request, response){
+    response.title = "Vos photos en ligne";
     response.render('home', response);
 };
 

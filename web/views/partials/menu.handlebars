@@ -1,0 +1,20 @@
+
+<div class="navbar-fixed">
+  <nav>
+   <div class="nav-wrapper grey darken-3">
+     <ul class="menu-right">
+       <li><a href="top" class="brand-logo">Logo</a></li>
+       <li><a href="#inscription" class="brand-logo">Inscription</a></li>
+     </ul>
+     <ul id="nav-mobile" class="left">
+        {{#if locals.session.pseudo}}
+          <li><i class="mdi mdi-social-person"></i><a href="home">Home</a></li>
+        {{else}}
+          <li>
+              <a href="connexion"><i class="mdi mdi-social-person block"></i>Connexion</a>
+          </li>
+        {{/if}}
+     </ul>
+   </div>
+ </nav>
+</div>

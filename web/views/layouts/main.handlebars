@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta  charset="UTF-8" />
+		<title> {{title}}</title>
+		<link rel="icon" type="image/png" href="/image/favicon.png" />
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/bower/materialize/dist/css/materialize.css" />
+		<script src="/bower/jquery/dist/jquery.min.js"></script>
+	</head>
+	<body>
+		<header>
+			{{> menu}}
+		</header>
+		<main>
+			{{{body}}}
+		</main>
+		<footer class="page-footer grey darken-3">
+			{{>footer}}
+		</footer>
+	</body>
+
+	<script src="/script/materialize.min.js"></script>
+	<script>
+	// Materialize elements initialisation
+	$(function () {
+		'use strict';
+
+		$('.scrollspy').scrollSpy();
+	});
+
+	// Sets parallax-container height, depending on the screen
+	$(function () {
+		'use strict';
+
+		var height = $(window).height();
+		var offsetTop = $('header').outerHeight();
+
+		$('.parallax-container').height(height - offsetTop - 25);
+	});
+
+	</script>
+</html>

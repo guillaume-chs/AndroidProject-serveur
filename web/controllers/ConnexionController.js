@@ -19,3 +19,8 @@ module.exports.Connect= function(request, response){
        }
     });
 };
+
+module.exports.Deconnexion = function(request, response){
+  response.locals.session.pseudo = null
+  response.redirect("/")
+}

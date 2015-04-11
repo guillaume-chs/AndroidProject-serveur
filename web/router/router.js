@@ -12,6 +12,9 @@ module.exports = function(app){
     app.get('/connexion', ConnexionController.Connexion)
     app.post('/connexion', ConnexionController.Connect)
 
+    //Déconnexion
+    app.get('/deconnexion',ConnexionController.Deconnexion)
+
     //User
     app.get('/home', HomeController.Home)
     app.post('/home', HomeController.Home)

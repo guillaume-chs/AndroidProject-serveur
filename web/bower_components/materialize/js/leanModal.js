@@ -7,8 +7,8 @@
 
       var defaults = {
         opacity: 0.5,
-        in_duration: 350,
-        out_duration: 250,
+        in_duration: 300,
+        out_duration: 200,
         ready: undefined,
         complete: undefined,
         dismissible: true
@@ -22,14 +22,16 @@
           $(modal).closeModal(options);
         });
         // Return on ESC
-        $(document).on('keyup.leanModal', function(e) {
+        $(document).keyup(function(e) {
           if (e.keyCode === 27) {   // ESC key
             $(modal).closeModal(options);
+            $(this).off();
           }
         });
       }
 
       $(modal).find(".modal-close").click(function(e) {
+        e.preventDefault();
         $(modal).closeModal(options);
       });
 
@@ -37,90 +39,47 @@
 
       $(modal).css({
         display : "block",
+        top: "4%",
         opacity: 0
       });
 
       $("#lean-overlay").velocity({opacity: options.opacity}, {duration: options.in_duration, queue: false, ease: "easeOutCubic"});
 
-
-      // Define Bottom Sheet animation
-      if ($(modal).hasClass('bottom-sheet')) {
-        $(modal).velocity({bottom: "0", opacity: 1}, {
-          duration: options.in_duration,
-          queue: false,
-          ease: "easeOutCubic",
-          // Handle modal ready callback
-          complete: function() {
-            if (typeof(options.ready) === "function") {
-              options.ready();
-            }
+      $(modal).velocity({top: "10%", opacity: 1}, {
+        duration: options.in_duration,
+        queue: false,
+        ease: "easeOutCubic",
+        // Handle modal ready callback
+        complete: function() {
+          if (typeof(options.ready) === "function") {
+            options.ready();
           }
-        });
-      }
-      else {
-        $(modal).css({ top: "4%" });
-        $(modal).velocity({top: "10%", opacity: 1}, {
-          duration: options.in_duration,
-          queue: false,
-          ease: "easeOutCubic",
-          // Handle modal ready callback
-          complete: function() {
-            if (typeof(options.ready) === "function") {
-              options.ready();
-            }
-          }
-        });
-      }
-
-
+        }
+      });
     }
   });
 
   $.fn.extend({
     closeModal: function(options) {
       var defaults = {
-        out_duration: 250,
+        out_duration: 200,
         complete: undefined
       }
       var options = $.extend(defaults, options);
 
       $('.modal-close').off();
-      $(document).off('keyup.leanModal');
 
       $("#lean-overlay").velocity( { opacity: 0}, {duration: options.out_duration, queue: false, ease: "easeOutQuart"});
+      $(this).fadeOut(options.out_duration, function() {
+        $(this).css({ top: 0});
+        $("#lean-overlay").css({display:"none"});
 
-
-      // Define Bottom Sheet animation
-      if ($(this).hasClass('bottom-sheet')) {
-        $(this).velocity({bottom: "-100%", opacity: 0}, {
-          duration: options.out_duration,
-          queue: false,
-          ease: "easeOutCubic",
-          // Handle modal ready callback
-          complete: function() {
-            $("#lean-overlay").css({display:"none"});
-
-            // Call complete callback
-            if (typeof(options.complete) === "function") {
-              options.complete();
-            }
-            $('#lean-overlay').remove();
-          }
-        });
-      }
-      else {
-        $(this).fadeOut(options.out_duration, function() {
-          $(this).css({ top: 0});
-          $("#lean-overlay").css({display:"none"});
-
-          // Call complete callback
-          if (typeof(options.complete) === "function") {
-            options.complete();
-          }
-          $('#lean-overlay').remove();
-        });
-      }
-
+        // Call complete callback
+        if (typeof(options.complete) === "function") {
+          options.complete();
+        }
+        $('#lean-overlay').remove();
+      });
     }
   })
 
@@ -129,7 +88,7 @@
       return this.each(function() {
         // Close Handlers
         $(this).click(function(e) {
-          var modal_id = $(this).attr("href") || '#' + $(this).data('target');
+          var modal_id = $(this).attr("href");
           $(modal_id).openModal(options);
           e.preventDefault();
         }); // done set on click

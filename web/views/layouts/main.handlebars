@@ -4,11 +4,11 @@
 		<meta  charset="UTF-8" />
 		<title> {{title}}</title>
 		<link rel="icon" type="image/png" href="/image/favicon.png" />
-		<link rel="stylesheet" href="/css/style.css" />
 		<link rel="stylesheet" href="/bower/materialize/dist/css/materialize.css" />
+		<link rel="stylesheet" href="/css/style.css" />
 		<script src="/bower/jquery/dist/jquery.min.js"></script>
 	</head>
-	<body>
+	<body id="top" class="scrollspy">
 		<header>
 			{{> menu}}
 		</header>
@@ -20,7 +20,7 @@
 		</footer>
 	</body>
 
-	<script src="/script/materialize.min.js"></script>
+	<script src="/bower/materialize/dist/js/materialize.min.js"></script>
 	<script>
 	// Materialize elements initialisation
 	$(function () {

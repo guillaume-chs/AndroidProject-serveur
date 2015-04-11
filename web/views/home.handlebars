@@ -1,4 +1,46 @@
 
-<div class="parallax-container valign-wrapper">
-  <div class="parallax"><img src="/image/plage.jpeg"></div>
+<div class="parallax-container" style="overflow: auto">
+  <div class="parallax" style="position: fixed"><img src="/image/plage.jpeg"></div>
+  <div class="row">
+    <div class ="col s3 m10 l3" >
+      <div class="card-panel grey darken-3" >
+        <form action="ajouteralbum" method="post">
+          <div class="row">
+            <div class="center">
+              <i class="mdi mdi-file-folder large"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <label for="nom">Nom de L'album</label>
+              <input id="nom" type="text" class="validate" name="nom">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s1 m12 center">
+              <button class="btn-floating btn-large waves-effect waves-light">
+                <i class="mdi-content-add"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class = "col l9">
+      <div class="col s3 l4">
+        <div class="card-panel grey darken-3">
+          <div class="row">
+            <div class="center">
+              <i class="mdi mdi-file-folder large"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field">
+              <label for="nom">Nom de L'album</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

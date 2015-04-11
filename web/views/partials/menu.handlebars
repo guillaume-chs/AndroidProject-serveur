@@ -3,15 +3,17 @@
    <div class="nav-wrapper">
      <ul class="menu-right">
        <li><a href="#top">Logo</a></li>
-       <li><a href="#inscription">Inscription</a></li>
+       {{#if locals.session.pseudo}}
+         <li><a href="deconnexion">Déconnexion</a></li>
+        {{else}}
+          <li><a href="#inscription">Inscription</a></li>
+        {{/if}}
      </ul>
      <ul id="nav-mobile" class="left">
         {{#if locals.session.pseudo}}
           <li><i class="mdi mdi-social-person"></i><a href="home">Home</a></li>
         {{else}}
-          <li>
-              <a href="connexion"><i class="mdi mdi-social-person block"></i>Connexion</a>
-          </li>
+          <li><i class="mdi mdi-social-person block"></i><a href="connexion">Connexion</a></li>
         {{/if}}
      </ul>
    </div>
